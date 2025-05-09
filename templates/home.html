@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .login {
+            max-width: 400px;
+            margin: auto;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>FWI Prediction</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <input type="text" name="Temperature" placeholder="Temperature" required><br>
+            <input type="text" name="RH" placeholder="RH" required><br>
+            <input type="text" name="Ws" placeholder="Ws" required><br>
+            <input type="text" name="Rain" placeholder="Rain" required><br>
+            <input type="text" name="FFMC" placeholder="FFMC" required><br>
+            <input type="text" name="DMC" placeholder="DMC" required><br>
+            <input type="text" name="ISI" placeholder="ISI" required><br>
+            <input type="text" name="Classes" placeholder="Classes" required><br>
+            <input type="text" name="Region" placeholder="Region" required><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result is not none %}
+        <h2>THE FWI prediction is: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
